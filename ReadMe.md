@@ -74,6 +74,23 @@ Start the server
 ```
 
 
+
+
+## How to use
+
+- Once the web server is up and running
+
+- Open your browser and head to [https://localhost](https://localhost)
+
+- Enter the name and the email id of the company you found (both must be unique and not been saved before)
+
+- Click on push to db, it will be saved by the database (even if you close your computer or terminate the web server)
+
+- Click on Show database to check if your data is saved or not
+
+- Click on Run Mailer and relax while your mails get delivered, doing this will automatically remove the name and the email id of the company your mail was sent to now from the database.
+
+- Click on wipe database if you made a mistake while filling the form and needs to wipe the database entirely
 ## API Reference
 
 | Parameter | Type     | Description                       |
@@ -107,6 +124,11 @@ Database Deletion
 This project requires you to have:
 
 - [NodeJS v18+](https://nodejs.org/en)
+
+
+## Roadmap
+
+This does the job for me, I'm not adding anything in the future. If you need a feature, fork or clone this project and implement it by yourself.
 ## Support
 
 For support, join our [Discord server](https://discord.gg/BDCjuxzYzw).
