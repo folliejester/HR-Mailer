@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const { QuickDB } = require("quick.db");
 const config = require('./config.json');
 const express = require('express');
+const sqlite3 = require('sqlite3').verbose();
 const e = require("express");
 const app = express()
 const db = new QuickDB();
@@ -14,36 +15,155 @@ app.listen(config.localhost_port, () => {
   console.log(`Go to: http://localhost:${config.localhost_port} \nAnd add company details.\n\n`);
 });
 app.use(bodyParser.json());
-app.post('/data', async function (req, res) {
+app.post('/data', function (req, res) {
   const { email, name } = req.body;
-  await db.set(`${name}`, name);
-  console.log(await db.get(email));
+  pushdata(email, name);
   // Respond to the client
   res.status(200).send('Data received successfully');
 });
 app.get('/delete', async function (req, res) {
   await db.deleteAll();
-  res.send(`Database Cleared! <a href="http://localhost:${config.localhost_port} ">Go Back</a>`);
+  res.send(`
+    <html>
+      <head>
+        <style>
+          body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+          }
+          a {
+            text-decoration: none;
+            color: blue;
+          }
+        </style>
+      </head>
+      <body>
+        <div>
+          Database Cleared! <a href="http://localhost:${config.localhost_port}">Go Back</a>
+        </div>
+      </body>
+    </html>
+  `);  
+});
+app.get('/showdb', async function (req, res) {
+  const db = new QuickDB({
+    file: 'C:/Users/follie/Documents/dev/json.sqlite' // Path to your SQLite file
+  });
+  //console.log((await db.all()).keys);
+  try {
+    // Fetch all data from the database
+    const data = await db.all(); // Await the promise
+
+    // Ensure data is an array and handle it
+    if (!Array.isArray(data) || data.length === 0) {
+      // No data found in the database
+      return res.send('<h1>Database is empty</h1>');
+    }
+
+    // Generate HTML table
+    let tableRows = '';
+    let serialNumber = 1; 
+    data.forEach(({ id, value }) => {
+      // Assuming `value` contains arrays of names and emails
+      if (value.email && value.name) {
+        value.email.forEach((email, index) => {
+          const name = value.name[index] || 'Unknown';
+          tableRows += `<tr><td>${serialNumber}</td><td>${email}</td><td>${name}</td></tr>`;
+          serialNumber++; 
+        });
+      }
+    });
+
+    const html = `
+      <html>
+        <head>
+          <title>Database Contents</title>
+          <style>
+            table {
+              width: 100%;
+              border-collapse: collapse;
+            }
+            table, th, td {
+              border: 1px solid black;
+            }
+            th, td {
+              padding: 8px;
+              text-align: left;
+            }
+            th {
+              background-color: #f2f2f2;
+            }
+            .serial-number {
+              width: 10px; /* Adjust width as needed */
+            }
+            .name, .email {
+              width: 200px; /* Adjust width as needed */
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Database Contents</h1>
+          <table>
+            <thead>
+              <tr>
+                <th class="serial-number">Serial No.</th>
+                <th class="email">Email</th>
+                <th class="name">Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${tableRows}
+            </tbody>
+          </table>
+        </body>
+      </html>
+    `;
+
+    // Send HTML as response
+    res.send(html);
+  } catch (error) {
+    console.error('Error accessing database:', error.message);
+    res.status(500).send('Error accessing database');
+  }
 });
 app.get('/run', async function (req, res) {
-  main().catch(console.error);
+  sender().catch(console.error);
   res.send(`Sending!`);
 });
-pushed(email, name);
-async function pushed(email, name) {
-  if (await db.get("Company") === undefined) {
+
+async function pushdata(email, name)
+{
+  if (await db.get("Company") === undefined)
+  {
     await db.set("Company", []);
-    console.log("Company Array Created");
   }
-  else {
-    //await db.push("Company.email", "email1222344");
-    //await db.push("Company.name", "name1322444");
-    const company = await db.get("Company");
-    for(i=0; i<=company.email.length-1; i++)
-      {
-        main(name, email)
-      }
+  else
+  {
+    await db.push("Company.email", email);
+    await db.push("Company.name", name);
   }
+}
+
+async function sender() {
+  const company = await db.get("Company");
+  const name = company.name[0];
+  const email = company.email[0];
+  if (company.name.length == 0 || company.email.length == 0) return console.log("No more companies to send to. Add some."); 
+  //await main(name, email).catch(console.error);
+  for (let i=0; i<config.loop; i++)
+  {
+    console.log(name, email);
+    const time = Math.random() * (config.max_time - config.min_time) + config.min_time;
+    console.log(time);
+    await new Promise(resolve => setTimeout(resolve, time));
+  }
+  await db.pull("Company.email", email);
+  await db.pull("Company.name", name);
+  process.nextTick(sender); 
 }
 
 const transporter = nodemailer.createTransport({
