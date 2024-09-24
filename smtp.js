@@ -40,7 +40,7 @@ app.get('/delete', async function (req, res) {
       </head>
       <body>
         <div>
-          Database Cleared! <a href="http://localhost:${config.localhost_port}">Go Back</a>
+          Database Cleared! <a href="/">Go Back</a>
         </div>
       </body>
     </html>
@@ -73,7 +73,7 @@ app.get('/showdb', async function (req, res) {
           </head>
           <body>
             <div>
-              Database is Empty! <a href="http://localhost:${config.localhost_port}">Go Back</a>
+              Database is Empty! <a href="/">Go Back</a>
             </div>
           </body>
         </html>
