@@ -7,7 +7,7 @@ const app = express()
 const db = new QuickDB();
 
 app.get('/', function (req, res) {
-  res.sendFile('C:/Users/follie/Documents/dev/mailer.html')
+  res.sendFile(config.mailerfilepath)
 })
 app.listen(config.localhost_port, () => {
   console.log(`Go to: http://localhost:${config.localhost_port} \nAnd add company details.\n\n`);
