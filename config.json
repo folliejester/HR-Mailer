@@ -1,0 +1,22 @@
+{
+    "localhost_port": 80,
+    "mail_host": "smtp.gmail.com",
+    "mail_port": 465,
+    "mail_secure": true,
+    "mail_auth_user": "hello@example.com",
+    "mail_auth_pass": "password",
+    "mail_from": "hello@example.com",
+    "mail_username": "John Cena",
+    "mail_subject": "Application for Java Developer",
+    "attachment_filename": "CV.pdf",
+    "attachment_path": "https://example.com/CV.pdf",
+    "linkedin": "https://www.linkedin.com/in/example/",
+    "github": "https://github.com/example/",
+    "googledev": "https://example.com",
+    "portfolio": "https://portfolio.com/",
+    "phone": "+91 98765 43210",
+    "jobrole": "Java Developer",
+    "max_time": 600000,
+    "min_time": 300000,
+    "loop": 3
+}
