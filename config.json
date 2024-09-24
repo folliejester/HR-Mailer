@@ -1,0 +1,22 @@
+{
+    "localhost_port": 80, -> use whatever port you want to
+    "mail_host": "smtp.gmail.com", -> your smtp port
+    "mail_port": 465, -> use port 465 (for SSL), or port 587 (for TLS)
+    "mail_secure": true, -> if true the connection will use TLS when connecting to server. If false (the default) then TLS is used if server supports the STARTTLS extension. In most cases set this value to true if you are connecting to port 465. For port 587 or 25 keep it false
+    "mail_auth_user": "hello@example.com", -> user is the username
+    "mail_auth_pass": "password", -> pass is the password for the user if normal login is used
+    "mail_from": "hello@example.com", -> The email address of the sender. All email addresses can be plain ‘sender@server.com’
+    "mail_username": "John Cena", -> The name to be shown it's from
+    "mail_subject": "Application for Java Developer", -> The subject of the email
+    "attachment_filename": "CV.pdf", -> filename to be reported as the name of the attached file. Use of unicode is allowed
+    "attachment_path": "https://example.com/CV.pdf or C:\Users\admin\Documents\CV.pdf", -> path to the file if you want to stream the file instead of including it (better for larger attachments)
+    "linkedin": "https://www.linkedin.com/in/example/", -> Your linkedin profile 
+    "github": "https://github.com/example/", -> Your github profile 
+    "googledev": "https://example.com", -> Your google dev profile 
+    "portfolio": "https://portfolio.com/", -> Your portfolio link
+    "phone": "+91 86978 78785", -> Your mobile number
+    "jobrole": "Java Developer", -> your interested job role
+    "max_time": 600000, -> maximum time in milisecond it will take to 
+    "min_time": 300000,
+    "loop": 3
+}
