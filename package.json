@@ -17,7 +17,7 @@
     "sqlite3": "^5.1.7"
   },
   "engines": {
-    "node": "21.x"
+    "node": "18.20.2"
   },
   "repository": {
     "url": "https://github.com/folliejester/HR-Mailer/"
