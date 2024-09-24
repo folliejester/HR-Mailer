@@ -14,9 +14,9 @@
     "github": "https://github.com/example/", -> Your github profile 
     "googledev": "https://example.com", -> Your google dev profile 
     "portfolio": "https://portfolio.com/", -> Your portfolio link
-    "phone": "+91 86978 78785", -> Your mobile number
+    "phone": "+91 98765 43210", -> Your mobile number
     "jobrole": "Java Developer", -> your interested job role
-    "max_time": 600000, -> maximum time in milisecond it will take to 
-    "min_time": 300000,
-    "loop": 3
+    "max_time": 600000, -> maximum time in milisecond it will take to send another email
+    "min_time": 300000, -> minimum time in milisecond it will take to send another email
+    "loop": 3 -> how many times it will send the same mail to the same recipient
 }
