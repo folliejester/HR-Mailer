@@ -1,11 +1,37 @@
 {
+  "name": "hrmailer",
+  "version": "1.1.0",
+  "description": "Create a database of company hr and their email and mail them your cv and your interest.",
+  "main": "smtp.js",
+  "scripts": {
+    "start": "node smtp.js"
+  },
   "dependencies": {
-    "body-parser": "^1.20.3",
+    "body-parser": "^2.0.1",
     "express": "^4.21.0",
-    "fs": "^0.0.1-security",
+    "fs": "^0.0.2",
     "mail": "^0.2.3",
-    "nodemailer": "^6.9.14",
+    "nodemailer": "^6.9.15",
     "quick.db": "^9.1.7",
     "sqlite3": "^5.1.7"
-  }
+  },
+  "engines": {
+    "node": "21.x"
+  },
+  "repository": {
+    "url": "https://github.com/folliejester/HR-Mailer/"
+  },
+  "license": "MIT",
+  "keywords": [
+    "mailer",
+    "mailsender",
+    "hrmailer",
+    "hrmailsender",
+    "hrmail",
+    "jobfinder",
+    "jobsearch",
+    "jobmailer",
+    "jobmailsender",
+    "jobmail"
+  ]
 }
