@@ -19,5 +19,5 @@
     "max_time": 600000,
     "min_time": 300000,
     "loop": 3,
-    "mailerfilepath": "app/mailer.html"
+    "mailerfilepath": "/app/mailer.html"
 }
