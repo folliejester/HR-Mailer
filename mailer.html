@@ -317,21 +317,16 @@ a.dbwork {
 </body>
 <script>
   document.getElementById('companyform').addEventListener('submit', function(event) {
-    var submitButton = event.submitter;  // Gets the button that was clicked
-
+    var submitButton = event.submitter;
       if (submitButton.name === 'run') {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost/run', true);  // Ensure this matches your server route
+    xhr.open('GET', 'http://localhost/run', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
-
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText);  // You can handle the server response here
-
-            // Show a prompt to the user
+            console.log(xhr.responseText);
             var reset = confirm('Mailer Running!');
-            document.getElementById('companyform').reset();  // Reset the form
         }
     };
   }
@@ -342,25 +337,20 @@ a.dbwork {
     return confirm("Are you sure you want to wipe the database? This action cannot be undone.");
   }
     document.getElementById('companyform').addEventListener('submit', function(event) {
-        event.preventDefault();  // Prevent the default form submission
-        var submitButton = event.submitter;  // Gets the button that was clicked
-
+        event.preventDefault();
+        var submitButton = event.submitter;
 if (submitButton.name === 'submit') {
         var email = document.getElementsByName('email')[0].value;
         var name = document.getElementsByName('name')[0].value;
-
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost/data', true);  // Ensure this matches your server route
+        xhr.open('POST', 'http://localhost/data', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({ email: email, name: name }));
-
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(xhr.responseText);  // You can handle the server response here
-
-                // Show a prompt to the user
+                console.log(xhr.responseText);
                 var reset = confirm('Pushed!');
-                document.getElementById('companyform').reset();  // Reset the form
+                document.getElementById('companyform').reset();
             }
         };
       }
