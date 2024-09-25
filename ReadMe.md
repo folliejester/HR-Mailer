@@ -112,13 +112,17 @@ Index Page
 
 ![Index Page Screenshot](https://i.imgur.com/yHcyLRK.png)
 
+Mail with the attachment
+
+![Mail & Attachment Screenshot](https://i.imgur.com/ZWoortB.png)
+
 Database Viewer
 
-![Index Page Screenshot](https://i.imgur.com/yi81tsB.png)
+![Database Viewer Screenshot](https://i.imgur.com/yi81tsB.png)
 
 Database Deletion
 
-![Index Page Screenshot](https://i.imgur.com/KdK3SCd.png)
+![Database Deletion Screenshot](https://i.imgur.com/KdK3SCd.png)
 ## Minimum Requirements
 
 This project requires you to have:
