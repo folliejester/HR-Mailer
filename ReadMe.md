@@ -41,6 +41,8 @@ Configure the configs.json file
   delete the 'config.json' file & rename 'configs.json' to 'config.json'
 ```
 
+Open the config.json file and make the necessary changes:
+
 | Parameter | Explanation | Example |
 | ----------------- | ----------------- | ----------------- |
 | localhost_port | network port of the web server  | 80 |
