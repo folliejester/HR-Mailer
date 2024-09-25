@@ -152,8 +152,8 @@ async function pushdata(email, name)
   }
   else
   {
-    await db.push("Company.email", email);
-    await db.push("Company.name", name);
+    await db.push("Company.email", email.trim());
+    await db.push("Company.name", name.trim());
   }
 }
 async function sender() {
